@@ -1,3 +1,4 @@
+import { CarroService } from './../../../services/carro.service';
 import { Component, EventEmitter, inject, Input, NgModule, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
@@ -14,8 +15,12 @@ import Swal from 'sweetalert2'
 })
 export class CarrosdetailsComponent {
 
+  @Input("carro") carro: Carro = new Carro("", 0);
+  @Output("retorno") retorno = new EventEmitter<any>();
   router = inject(ActivatedRoute);
   router2 = inject(Router);
+
+  CarroService = inject(CarroService);
 
   constructor(){
     let id = this.router.snapshot.params["id"];
@@ -26,38 +31,83 @@ export class CarrosdetailsComponent {
   }
 
   findById(id: number){
-    let carroRetornado: Carro = new Carro(id,"fiesta");
-    this.carro = carroRetornado;
+
+    this.CarroService.findById(id).subscribe({
+      next: retorno => {
+        this.carro = retorno;
+
+      },
+      error: erro =>{
+        Swal.fire({
+                  title: 'ocorreu um ero',
+
+                  icon: 'error',
+                  confirmButtonText: 'Ok'
+                })
+
+      }
+    });
   }
 
-  @Input("carro") carro: Carro = new Carro(0, "");
-  @Output("retorno") retorno = new EventEmitter<any>();
+
 
 
   save(){
     if(this.carro.id > 0){
-      Swal.fire({
-        title: 'sucesso',
-        text: 'editado com sucesso',
-        icon: 'success',
-        confirmButtonText: 'Ok'
+
+      this.CarroService.update(this.carro, this.carro.id).subscribe({
+        next: mensagem => {
+
+          Swal.fire({
+            title: mensagem,
+
+            icon: 'error',
+            confirmButtonText: 'Ok'
+          });
+
+          this.router2.navigate(['admin/carros'],  {state: {carroEditado: this.carro}});
+          this.retorno.emit(this.carro);
+
+
+        },
+        error: erro =>{
+
+          Swal.fire({
+                    title: 'ocorreu um ero',
+
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                  })
+
+        }
       });
 
-    this.router2.navigate(['admin/carros'],  {state: {carroEditado: this.carro}});
+
 
 
     }else{
-      Swal.fire({
-        title: 'sucesso',
-        text: 'salvo',
-        icon: 'success',
-        confirmButtonText: 'Ok'
+      console.log("Novo carro sendo cadastrado:", this.carro);
+
+      this.CarroService.save(this.carro).subscribe({
+        next: mensagem => {
+          Swal.fire({
+            title: mensagem,
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+
+        },
+        error: erro =>{
+
+        }
       });
+
+
     this.router2.navigate(['admin/carros'], {state: {carroNovo: this.carro}});
+    this.retorno.emit(this.carro);
   }
 
 
-  this.retorno.emit(this.carro);
 }
 
 }

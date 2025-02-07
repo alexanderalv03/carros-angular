@@ -10,8 +10,17 @@
             <input mdbInput type="text" id="nome" class="form-control" [(ngModel)]="carro.nome">
             <label mdbLabel class="form-label" for="form1">nome</label>
           </mdb-form-control>
+          <br/>
 
-          <br />
+          <!-- Ano do carro -->
+          <mdb-form-control>
+            <input mdbInput type="number" id="ano" class="form-control" [(ngModel)]="carro.ano">
+            <label mdbLabel class="form-label" for="ano">Ano</label>
+          </mdb-form-control>
+
+
+
+          <br/>
           <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="save()">
             Salvar
           </button>

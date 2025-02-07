@@ -22,7 +22,7 @@ export class CarroslistComponent {
 
   carroService = inject(CarroService);
 
-  carroEdit: Carro = new Carro(0,"");
+  carroEdit: Carro = new Carro("", 0);
   lista: Carro[] = [];
 
   constructor(){
@@ -116,7 +116,7 @@ export class CarroslistComponent {
 
 
   new(){
-    this.carroEdit = new Carro(0,"");
+    this.carroEdit = new Carro("", 0);
     this.modalRef = this.modalService.open(this.modalCarroDetalhe);
 
   }
@@ -129,18 +129,10 @@ export class CarroslistComponent {
 
   retornoDetalhe(carro: Carro){
 
-    if(carro.id > 0){
-      let indice = this.lista.findIndex( x => {return x.id == carro.id});
-      this.lista[indice] = carro;
-
-    }else{
-      carro.id = 55;
-      this.lista.push(carro);
-    }
-
-    this.modalRef.close();
+    this.findAll();
+     this.modalRef.close();
   }
 
 
-  }
+}
 
