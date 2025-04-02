@@ -10,7 +10,7 @@ import { CarrosdetailsComponent } from "../carrosdetails/carrosdetails.component
 @Component({
   selector: 'app-carroslist',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, CarrosdetailsComponent],
+  imports: [MdbModalModule, CarrosdetailsComponent],
   templateUrl: './carroslist.component.html',
   styleUrl: './carroslist.component.scss'
 })

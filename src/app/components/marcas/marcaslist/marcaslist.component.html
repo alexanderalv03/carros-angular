@@ -1,1 +1,65 @@
-<p>marcaslist works!</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h3>Catálogo de Marcas</h3>
+          <div class="direita">
+
+        <!---    <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="newMarca()">
+              Nova Marca
+            </button>
+          -->
+          </div>
+          <br>
+          <table border="1" class="table table-striped">
+
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+
+         <!--   @for (marca of listaMarcas; track $index) {
+            <tr>
+              <td>{{marca.id}}</td>
+              <td>{{marca.nome}}</td>
+              <td class="direita">
+                <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="editMarca(marca)">
+                  Editar
+                </button>
+                <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="deleteMarcaById(marca)">
+                  Excluir
+                </button>
+              </td>
+            </tr>
+          }-->
+          </tbody>
+
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<ng-template #modalMarcaDetalhe>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro de Marca</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-marcadetails [marca]="marcaEdit" (retorno)="retornoDetalhe($event)"></app-marcadetails>
+  </div>
+</ng-template>
+-->
