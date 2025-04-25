@@ -22,7 +22,7 @@ export class CarroslistComponent {
 
   carroService = inject(CarroService);
 
-  carroEdit: Carro = new Carro("", 0);
+  carroEdit: Carro = new Carro("", 0, null);
   lista: Carro[] = [];
 
   constructor(){
@@ -116,7 +116,7 @@ export class CarroslistComponent {
 
 
   new(){
-    this.carroEdit = new Carro("", 0);
+    this.carroEdit = new Carro("", 0, null);
     this.modalRef = this.modalService.open(this.modalCarroDetalhe);
 
   }

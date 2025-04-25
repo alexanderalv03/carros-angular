@@ -1,1 +1,28 @@
-<p>marcasdetails works!</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+
+          <h3>Cadastro de marca</h3>
+          <mdb-form-control>
+            <input mdbInput type="text" id="nome" class="form-control" [(ngModel)]="marca.marcaNome">
+            <label mdbLabel class="form-label" for="nome">Nome marca</label>
+          </mdb-form-control>
+          <br/>
+
+
+          <br/>
+          <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="save()">
+            Salvar
+          </button>
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

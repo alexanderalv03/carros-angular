@@ -29,6 +29,8 @@
             <tr>
               <th>ID</th>
               <th>Nome</th>
+              <th>Marca</th>
+              <th>Ano</th>
               <th>Açoes</th>
             </tr>
           </thead>
@@ -38,6 +40,8 @@
             <tr>
               <td>{{carro.id}}</td>
               <td>{{carro.nome}}</td>
+              <td>{{carro.marca?.marcaNome}}</td>
+              <td>{{carro.ano}}</td>
               <td class="direita">
                 <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="edit(carro)">
                   Editar

@@ -1,6 +1,13 @@
 export class Marca {
 
-    id!:number;
-    nome!: string;
+    marcaId!:number;
+    marcaNome!: string;
 
+    constructor(marcaNome: string){
+
+
+      this.marcaNome = marcaNome;
+
+
+    }
 }
