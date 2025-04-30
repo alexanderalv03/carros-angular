@@ -1,3 +1,4 @@
+import { Acessorio } from "./acessorio";
 import { Marca } from "./marca";
 
 export class Carro {
@@ -6,6 +7,7 @@ export class Carro {
     nome!: string;
     ano!: number;
     marca: Marca | null | undefined;
+    acessorios: Acessorio[] = []
 
     constructor(nome: string, ano: number, marca: Marca | null){
 

@@ -8,11 +8,13 @@ import Swal from 'sweetalert2'
 import { Marca } from '../../../models/marca';
 import { MarcaslistComponent } from "../../marcas/marcaslist/marcaslist.component";
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
+import { Acessorio } from '../../../models/acessorio';
+import { AcessorioslistComponent } from '../../acessorios/acessorioslist/acessorioslist.component';
 
 @Component({
   selector: 'app-carrosdetails',
   standalone: true,
-  imports: [MdbFormsModule, FormsModule, MarcaslistComponent],
+  imports: [MdbFormsModule, FormsModule, MarcaslistComponent, AcessorioslistComponent],
   templateUrl: './carrosdetails.component.html',
   styleUrl: './carrosdetails.component.scss'
 })
@@ -21,6 +23,8 @@ export class CarrosdetailsComponent {
 
    modalService = inject(MdbModalService);
     @ViewChild("modalMarcas") modalMarcas!: TemplateRef<any>;
+    @ViewChild("modalAcessorios") modalAcessorios!: TemplateRef<any>;
+
     modalRef!: MdbModalRef<any>;
 
   @Input("carro") carro: Carro = new Carro("", 0, null);
@@ -123,8 +127,19 @@ buscarMarca(){
 
 }
 
+buscarAcessorio(){
+  this.modalRef = this.modalService.open(this.modalAcessorios, {modalClass: 'modal-lg'});
+
+}
+
 retornoMarca(marca:Marca){
   this.carro.marca = marca;
+  this.modalRef.close;
+
+}
+
+retornoAcessorio(acessorio:Acessorio){
+  //this.carro.acessorios = acessorio;
   this.modalRef.close;
 
 }
