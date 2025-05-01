@@ -31,15 +31,70 @@
          }
           @else{
 
-            <span class="text-primary">Marca: {{carro.marca.marcaNome}}</span>
-            <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="buscarMarca()">
-              Trocar Marca
-            </button>
+            <div class="row">
+              <div class="col-lg-8">
+                <p class="text-primary alert-primary">Marca: {{carro.marca.marcaNome}}</p>
+
+              </div>
+
+              <div class="col-lg-4">
+                <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="buscarMarca()">
+                  Trocar Marca
+                </button>
+
+              </div>
+
+
+            </div>
+
+
+
 
 
 
         }
       </div>
+
+      <br>
+      <br>
+
+      <div>
+
+
+
+          <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="buscarAcessorio()">
+            Buscar Acessorio
+          </button>
+
+          <br>
+
+          <table border="1" class="table table-striped">
+
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (acessorio of carro.acessorios; track $index) {
+                <tr>
+                  <td>{{ acessorio.acessorioId }}</td>
+                  <td>{{ acessorio.acessorioNome }}</td>
+                  <td class="direita">
+
+                      <button type="button" class="btn btn-danger btn-rounded" mdbRipple (click)="desvincularAcessorioCarro(acessorio)">
+                        Excluir
+                      </button>
+                    }
+
+            </tbody>
+
+          </table>
+
+
+    </div>
 
 
           <br><br>

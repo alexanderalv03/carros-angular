@@ -139,9 +139,16 @@ retornoMarca(marca:Marca){
 }
 
 retornoAcessorio(acessorio:Acessorio){
-  //this.carro.acessorios = acessorio;
+  if(this.carro.acessorios == null)
+    this.carro.acessorios = [];
+  this.carro.acessorios.push(acessorio);
   this.modalRef.close;
 
+}
+
+desvincularAcessorioCarro(acessorio:Acessorio){
+  let posicao = this.carro.acessorios.findIndex(x => {return x.acessorioId == acessorio.acessorioId});
+  this.carro.acessorios.splice(posicao, 1);
 }
 
 }
