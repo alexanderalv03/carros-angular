@@ -8,7 +8,7 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   let router = inject(Router);
 
   let token = localStorage.getItem('token');
-  if (token && !router.url.includes('/login')) {
+  if (token && !request.url.includes('/login')) {
     request = request.clone({
       setHeaders: { Authorization: 'Bearer ' + token },
     });
@@ -17,8 +17,8 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   return next(request).pipe(
     catchError((err: any) => {
       if (err instanceof HttpErrorResponse) {
-	  
-	  
+
+
         if (err.status === 401) {
           alert('401 - tratar aqui');
           router.navigate(['/login']);
@@ -28,8 +28,8 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
         } else {
           console.error('HTTP error:', err);
         }
-		
-		
+
+
       } else {
         console.error('An error occurred:', err);
       }

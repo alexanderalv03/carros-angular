@@ -19,19 +19,26 @@ export class LoginComponent {
 
   router = inject(Router);
   loginService = inject(LoginService);
+usuario: any;
+senha: any;
 
 
   logar(){
+
+    console.log(this.login);
 
     this.loginService.logar(this.login).subscribe(
       {
         next: token =>{
           if(token){
             this.loginService.addToken(token);
+            console.log('Token recebido e salvo:', token);
+            this.router.navigate(['/admin/carros']);
           }
 
         },
         error: erro =>{
+
           alert('erro')
 
         }
