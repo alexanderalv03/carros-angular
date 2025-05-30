@@ -28,12 +28,17 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="admin/carros">Carros</a>
         </li>
+
+
+        @if(loginService.hasPermission("admin")){
         <li class="nav-item">
+
+
           <a class="nav-link" href="admin/marcas">Marcas</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="admin/acessorios">Acessorios</a>
-        </li>
+        </li>}
         <li class="nav-item">
           <a class="nav-link disabled" href="login" tabindex="-1" aria-disabled="true"
             >Sair</a
@@ -41,6 +46,9 @@
         </li>
       </ul>
       <!-- Left links -->
+       <div class="d-flex align-items-center ms-auto text-white">
+  <span class="me-3">Olá, {{ usuario.username }}</span>
+</div>
 
       <!-- Search form -->
       <form class="d-flex input-group w-auto">
