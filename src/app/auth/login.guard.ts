@@ -6,10 +6,13 @@ export const loginGuard: CanActivateFn = (route, state) => {
 
   let loginService = inject(LoginService);
 
-  if(loginService.hasPermission("user") && state.url == '/admin/marcas', '/admin/acessorios'){
-    alert('voce nao tem permissao para acessar essa rota');
-    return false;
-  }
+  if (
+  loginService.hasPermission("user") &&
+  (state.url.startsWith('/admin/marcas') || state.url.startsWith('/admin/acessorios'))
+) {
+  alert('voce nao tem permissao para acessar essa rota');
+  return false;
+}
 
   return true;
 };
